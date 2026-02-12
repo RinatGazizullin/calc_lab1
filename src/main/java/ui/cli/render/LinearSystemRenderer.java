@@ -36,7 +36,7 @@ public class LinearSystemRenderer implements Renderer<LinearSystem> {
                     data.builder.append(" + ");
                 }
                 data.builder.append(String.format("x%d * ", j + 1))
-                        .append(linearSystem.getCoefficients().getMatrix()[i][j]);
+                        .append(linearSystem.getCoefficients().getMatrix()[i][j].stripTrailingZeros());
             });
             data.firstNumber = true;
             data.builder.append(" = ").append(linearSystem.getConstants().getVector()[i]);

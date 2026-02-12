@@ -27,7 +27,7 @@ public class VectorSolutionRenderer implements Renderer<Vector> {
                 data.builder.append("\n");
             }
             data.builder.append(String.format("x%d = ", i + 1))
-                    .append(vector.getVector()[i]);
+                    .append(vector.getVector()[i].stripTrailingZeros());
         });
 
         return data.builder.toString();
