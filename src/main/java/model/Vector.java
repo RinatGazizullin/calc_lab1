@@ -38,7 +38,7 @@ public class Vector implements Cloneable, SystemOperations {
 
     @Override
     public void multiplyScalar(BigDecimal scalar, int row) throws SystemException {
-        if (row < 0 || row >= size) {
+        if (row < 0 || row > size) {
             throw new SystemException(Vector.Errors.VALID.message);
         }
         vector[row] = scalar.multiply(vector[row]);

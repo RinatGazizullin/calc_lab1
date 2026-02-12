@@ -1,5 +1,7 @@
 package ui.processor;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -15,7 +17,25 @@ public class UiProcessor {
     private static final String MOVE_LEFT = ESC + "D";
     private static final String MOVE_HOME = ESC + "H";
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static final int TERMINAL_WIDTH = getTerminalWidth();
     private int clearLength = 0;
+
+    private static int getTerminalWidth() {
+        try {
+            Process process = Runtime.getRuntime().exec(new String[]{
+                    "sh", "-c", "tput cols 2>/dev/null || echo 80"
+            });
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()))) {
+                String line = reader.readLine();
+                if (line != null && !line.isEmpty()) {
+                    return Integer.parseInt(line.trim());
+                }
+            }
+        } catch (Exception ignored) {
+        }
+        return 80;
+    }
 
     public String readString() {
         clearLength++;
@@ -49,7 +69,7 @@ public class UiProcessor {
             if (line.isEmpty()) {
                 totalLines++;
             } else {
-                totalLines += (line.length() + 79) / 80;
+                totalLines += (line.length() + TERMINAL_WIDTH - 1) / TERMINAL_WIDTH;
             }
         }
 
@@ -70,10 +90,6 @@ public class UiProcessor {
             case IGNORE_LAST:
                 clearLast();
                 clearLength += length - 1;
-                break;
-            case CLEAR_ALL:
-                clearScreen();
-                clearLength = length;
                 break;
             case NEW_LINE:
                 clearLength += length;

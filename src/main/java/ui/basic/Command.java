@@ -19,6 +19,7 @@ public abstract class Command {
     public enum Type {
         BUILD("build", "Ввести все коэффицикеты СЛУ"),
         CLEAR("clear", "Очистить терминал"),
+        DET("det", "Вывести определитель матрицы"),
         EXIT("exit", "Завершить работу"),
         HELP("help", "Вывести справку по командам"),
         RANDOM("random", "Заполнить СЛУ случайными величинами <min> <max>"),

@@ -11,7 +11,6 @@ import ui.basic.Command;
 import ui.basic.Renderer;
 import ui.builders.ChangeSystemBuilder;
 import ui.builders.LinearSystemBuilder;
-import ui.cli.commands.*;
 import ui.render.LinearSystemRenderer;
 import ui.render.VectorSolutionRenderer;
 import java.util.*;
@@ -39,6 +38,7 @@ public class CommandLineCore {
                 new LinearSystemBuilder(uiProcessor),
                 linearSystem));
         commands.put(Command.Type.CLEAR, new Clear(uiProcessor));
+        commands.put(Command.Type.DET, new Det(linearSystem));
         commands.put(Command.Type.EXIT, new Exit(uiProcessor));
         commands.put(Command.Type.HELP, new Help());
         commands.put(Command.Type.RANDOM, new Random(linearSystem,
@@ -71,7 +71,8 @@ public class CommandLineCore {
                             new Command.Arguments(Arrays.copyOfRange(input, 1, input.length)));
                 } else {
                     uiProcessor.renderError(
-                            String.format("Команда <%s> не обнаружена", input[0]), UiProcessor.Message.CLEAR_LAST);
+                            String.format("Команда <%s> не обнаружена", input[0]),
+                            UiProcessor.Message.CLEAR_LAST);
                     continue;
                 }
 

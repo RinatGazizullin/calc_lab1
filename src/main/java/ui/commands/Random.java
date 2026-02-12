@@ -37,10 +37,10 @@ public class Random extends Command {
         for (int i = 0; i < system.getCoefficients().getSize(); i++) {
             for (int j = 0; j < system.getCoefficients().getSize(); j++) {
                 system.getCoefficients().getMatrix()[i][j] =
-                        BigDecimal.valueOf(min + (Math.random() * (max - min)));
+                        BigDecimal.valueOf(min + Math.round(Math.random() * (max - min)));
             }
             system.getConstants().getVector()[i] =
-                    BigDecimal.valueOf(min + (Math.random() * (max - min)));
+                    BigDecimal.valueOf(min + Math.round(Math.random() * (max - min)));
         }
 
         system.resetSolution();

@@ -5,6 +5,8 @@ import exceptions.SolverException;
 import exceptions.SystemException;
 import model.LinearSystem;
 import model.Vector;
+import utils.MatrixUtils;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -15,31 +17,7 @@ public class GaussSolver implements Solver<LinearSystem> {
             final int n = system.getCoefficients().getSize();
             final LinearSystem solving = system.clone();
 
-            for (int i = 0; i < n - 1; i++) {
-                boolean found = false;
-
-                if (solving.getCoefficients().getMatrix()[i][i].compareTo(BigDecimal.ZERO) == 0) {
-                    for (int k = i; k < n; k++) {
-                        if (solving.getCoefficients().getMatrix()[k][i].compareTo(BigDecimal.ZERO) != 0) {
-                            if (k != i) {
-                                solving.swapRows(i, k);
-                            }
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (!found) {
-                    throw new SolverException("Матрица вырождена, система не имеет единственного решения");
-                }
-
-                for (int k = i + 1; k < n; k++) {
-                    final BigDecimal c = solving.getCoefficients().getMatrix()[k][i].divide(
-                            solving.getCoefficients().getMatrix()[i][i], 20, RoundingMode.HALF_UP);
-                    solving.addMultiplyRow(c.negate(), i, k);
-                }
-            }
+            MatrixUtils.makeTriangle(solving);
 
             final Vector solution = Vector.empty(n);
 

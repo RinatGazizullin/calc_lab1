@@ -72,7 +72,7 @@ public class Matrix implements Cloneable, SystemOperations {
 
     @Override
     public void changeSize(int newSize) throws SystemException {
-        if (newSize <= 0 || newSize >= MAX_SIZE) {
+        if (newSize <= 0 || newSize > MAX_SIZE) {
             throw new SystemException(Errors.SIZE.message);
         }
 
