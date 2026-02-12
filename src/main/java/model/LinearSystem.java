@@ -1,24 +1,30 @@
 package model;
 
 import basic.SystemOperations;
-import exceptions.DataException;
 import exceptions.SystemException;
 import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
 @Getter
 public class LinearSystem implements Cloneable, SystemOperations {
     private Matrix coefficients;
     private Vector constants;
+    @Setter
     private Vector solution;
 
-    public LinearSystem(Matrix matrix, Vector constants) throws DataException {
+    public LinearSystem(Matrix matrix, Vector constants) throws SystemException {
         this.coefficients = matrix;
         this.constants = constants;
         if (this.coefficients.getSize() != this.constants.getSize()) {
-            throw new DataException(Errors.DIFFERENT_LENGTH.message);
+            throw new SystemException(Errors.DIFFERENT_LENGTH.message);
         }
         this.solution = Vector.empty(this.coefficients.getSize());
+    }
+
+    public static LinearSystem empty(int size) throws SystemException {
+        return new LinearSystem(Matrix.empty(2), Vector.empty(2));
     }
 
     @Override

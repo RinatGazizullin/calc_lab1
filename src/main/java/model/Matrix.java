@@ -21,6 +21,10 @@ public class Matrix implements Cloneable, SystemOperations {
         this.size = matrix.length;
     }
 
+    public static Matrix empty(int size) throws SystemException {
+        return new Matrix(new BigDecimal[size][size]);
+    }
+
     @Override
     public void swapRows(int row1, int row2) throws SystemException {
         if (row1 == row2) return;

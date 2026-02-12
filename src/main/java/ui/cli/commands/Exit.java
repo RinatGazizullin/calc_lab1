@@ -3,16 +3,16 @@ package ui.cli.commands;
 import ui.cli.basic.Command;
 import ui.cli.processor.UiProcessor;
 
-public class Clear extends Command {
+public class Exit extends Command {
     private final UiProcessor uiProcessor;
 
-    public Clear(UiProcessor uiProcessor) {
-        super(Type.CLEAR);
+    public Exit(UiProcessor uiProcessor) {
+        super(Type.EXIT);
         this.uiProcessor = uiProcessor;
     }
 
     @Override
     public Result run(Arguments ignored) {
-        return new Result("Терминал очищен!", Result.Code.GOOD);
+        return new Result("Завершение работы!", Result.Code.EXIT);
     }
 }

@@ -1,7 +1,7 @@
-package ui.cli.builders;
+package ui.cli.basic;
 
 import exceptions.DataException;
 
 public interface Builder<T> {
-    T build(int size) throws DataException;
+    void build(T t) throws DataException;
 }
