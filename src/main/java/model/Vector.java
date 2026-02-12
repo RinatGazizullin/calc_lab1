@@ -5,6 +5,7 @@ import exceptions.SystemException;
 import lombok.Getter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.stream.IntStream;
 
 @Getter
 public class Vector implements Cloneable, SystemOperations {
@@ -17,8 +18,11 @@ public class Vector implements Cloneable, SystemOperations {
         size = vector.length;
     }
 
-    public static Vector empty(int length) {
-        return new Vector(new BigDecimal[length]);
+    public static Vector empty(int size) {
+        final BigDecimal[] empty = new BigDecimal[size];
+
+        IntStream.range(0, size).forEach(i -> empty[i] = BigDecimal.ZERO);
+        return new Vector(empty);
     }
 
     @Override

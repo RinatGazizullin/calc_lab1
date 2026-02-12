@@ -24,7 +24,11 @@ public class LinearSystem implements Cloneable, SystemOperations {
     }
 
     public static LinearSystem empty(int size) throws SystemException {
-        return new LinearSystem(Matrix.empty(2), Vector.empty(2));
+        return new LinearSystem(Matrix.empty(size), Vector.empty(size));
+    }
+
+    public void resetSolution() {
+        this.solution = Vector.empty(this.solution.getSize());
     }
 
     @Override

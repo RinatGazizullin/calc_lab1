@@ -22,7 +22,11 @@ public class Matrix implements Cloneable, SystemOperations {
     }
 
     public static Matrix empty(int size) throws SystemException {
-        return new Matrix(new BigDecimal[size][size]);
+        final BigDecimal[][] empty = new BigDecimal[size][size];
+
+        IntStream.range(0, size).forEach(i ->
+                IntStream.range(0, size).forEach(j -> empty[i][j] = BigDecimal.ZERO));
+        return new Matrix(empty);
     }
 
     @Override

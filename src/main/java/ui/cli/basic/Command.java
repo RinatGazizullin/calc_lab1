@@ -21,6 +21,7 @@ public abstract class Command {
         CLEAR("clear", "Очистить терминал"),
         EXIT("exit", "Завершить работу"),
         HELP("help", "Вывести справку по командам"),
+        RANDOM("random", "Заполнить СЛУ случайными величинами <min> <max>"),
         SET("set", "Изменить коэффициент СЛУ"),
         SHOW("show", "Показать СЛУ"),
         SIZE("size", "Задать размер <size>"),

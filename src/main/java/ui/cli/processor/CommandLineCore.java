@@ -9,6 +9,7 @@ import ui.cli.basic.Renderer;
 import ui.cli.builders.ChangeSystemBuilder;
 import ui.cli.builders.LinearSystemBuilder;
 import ui.cli.commands.*;
+import ui.cli.commands.Random;
 import ui.cli.commands.Set;
 import ui.cli.render.LinearSystemRenderer;
 import ui.cli.render.VectorSolutionRenderer;
@@ -39,7 +40,10 @@ public class CommandLineCore {
         commands.put(Command.Type.CLEAR, new Clear(uiProcessor));
         commands.put(Command.Type.EXIT, new Exit(uiProcessor));
         commands.put(Command.Type.HELP, new Help());
-        commands.put(Command.Type.SET, new Set(new ChangeSystemBuilder(uiProcessor,
+        commands.put(Command.Type.RANDOM, new Random(linearSystem,
+                linearSystemRenderer));
+        commands.put(Command.Type.SET, new Set(
+                new ChangeSystemBuilder(uiProcessor,
                 linearSystemRenderer),
                 linearSystem));
         commands.put(Command.Type.SHOW, new Show(linearSystem,

@@ -79,6 +79,7 @@ public class LinearSystemBuilder implements Builder<LinearSystem> {
                 throw new DataException("СЛУ не была собрана полностью");
             }
 
+            linearSystem.resetSolution();
             uiProcessor.renderText(builder.toString(), UiProcessor.Message.IGNORE_LAST, true);
         }
     }
