@@ -1,7 +1,7 @@
-package ui.cli.commands;
+package ui.commands;
 
-import ui.cli.basic.Command;
-import ui.cli.processor.UiProcessor;
+import ui.basic.Command;
+import ui.processor.UiProcessor;
 
 public class Clear extends Command {
     private final UiProcessor uiProcessor;

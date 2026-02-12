@@ -1,7 +1,7 @@
-package ui.cli.render;
+package ui.render;
 
 import model.Vector;
-import ui.cli.basic.Renderer;
+import ui.basic.Renderer;
 import java.text.NumberFormat;
 import java.util.stream.IntStream;
 

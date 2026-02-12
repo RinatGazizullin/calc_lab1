@@ -1,18 +1,19 @@
-package ui.cli.processor;
+package ui.processor;
 
 import basic.Solver;
+import ui.commands.*;
+import ui.commands.Random;
+import ui.commands.Set;
 import exceptions.DataException;
 import exceptions.SystemException;
 import model.LinearSystem;
-import ui.cli.basic.Command;
-import ui.cli.basic.Renderer;
-import ui.cli.builders.ChangeSystemBuilder;
-import ui.cli.builders.LinearSystemBuilder;
+import ui.basic.Command;
+import ui.basic.Renderer;
+import ui.builders.ChangeSystemBuilder;
+import ui.builders.LinearSystemBuilder;
 import ui.cli.commands.*;
-import ui.cli.commands.Random;
-import ui.cli.commands.Set;
-import ui.cli.render.LinearSystemRenderer;
-import ui.cli.render.VectorSolutionRenderer;
+import ui.render.LinearSystemRenderer;
+import ui.render.VectorSolutionRenderer;
 import java.util.*;
 
 public class CommandLineCore {

@@ -1,4 +1,4 @@
-package ui.cli.processor;
+package ui.processor;
 
 import java.util.Scanner;
 import java.util.stream.IntStream;

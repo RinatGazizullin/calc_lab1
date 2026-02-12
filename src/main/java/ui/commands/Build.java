@@ -1,10 +1,10 @@
-package ui.cli.commands;
+package ui.commands;
 
 import exceptions.DataException;
 import model.LinearSystem;
-import ui.cli.basic.Builder;
-import ui.cli.basic.Command;
-import ui.cli.basic.Renderer;
+import ui.basic.Builder;
+import ui.basic.Command;
+import ui.basic.Renderer;
 
 public class Build extends Command {
     private final Renderer<LinearSystem> linearSystemRenderer;

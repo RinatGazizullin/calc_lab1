@@ -1,11 +1,11 @@
-package ui.cli.commands;
+package ui.commands;
 
 import basic.Solver;
 import exceptions.SolverException;
 import model.LinearSystem;
 import model.Vector;
-import ui.cli.basic.Command;
-import ui.cli.basic.Renderer;
+import ui.basic.Command;
+import ui.basic.Renderer;
 
 public class Solve extends Command {
     private final Solver<LinearSystem> solver;

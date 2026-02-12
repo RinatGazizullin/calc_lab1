@@ -1,10 +1,10 @@
-package ui.cli.builders;
+package ui.builders;
 
 import exceptions.DataException;
 import model.LinearSystem;
-import ui.cli.basic.Builder;
-import ui.cli.basic.Renderer;
-import ui.cli.processor.UiProcessor;
+import ui.basic.Builder;
+import ui.basic.Renderer;
+import ui.processor.UiProcessor;
 
 import java.math.BigDecimal;
 

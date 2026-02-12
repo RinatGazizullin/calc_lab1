@@ -1,4 +1,4 @@
-package ui.cli.basic;
+package ui.basic;
 
 public interface Renderer<T> {
     String render(T t);

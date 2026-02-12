@@ -1,8 +1,8 @@
-package ui.cli.commands;
+package ui.commands;
 
 import model.LinearSystem;
-import ui.cli.basic.Command;
-import ui.cli.basic.Renderer;
+import ui.basic.Command;
+import ui.basic.Renderer;
 
 public class Show extends Command {
     private final LinearSystem linearSystem;

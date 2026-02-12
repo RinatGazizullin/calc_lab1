@@ -1,6 +1,6 @@
 import exceptions.DataException;
 import solver.GaussSolver;
-import ui.cli.processor.CommandLineCore;
+import ui.processor.CommandLineCore;
 
 public class Main {
     public static void main(String[] args) {

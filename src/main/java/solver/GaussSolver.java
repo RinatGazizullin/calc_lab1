@@ -16,8 +16,22 @@ public class GaussSolver implements Solver<LinearSystem> {
             final LinearSystem solving = system.clone();
 
             for (int i = 0; i < n - 1; i++) {
+                boolean found = false;
+
                 if (solving.getCoefficients().getMatrix()[i][i].compareTo(BigDecimal.ZERO) == 0) {
-                    throw new SolverException("Нужна перестановка");
+                    for (int k = i; k < n; k++) {
+                        if (solving.getCoefficients().getMatrix()[k][i].compareTo(BigDecimal.ZERO) != 0) {
+                            if (k != i) {
+                                solving.swapRows(i, k);
+                            }
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!found) {
+                    throw new SolverException("Матрица вырождена, система не имеет единственного решения");
                 }
 
                 for (int k = i + 1; k < n; k++) {
@@ -37,7 +51,7 @@ public class GaussSolver implements Solver<LinearSystem> {
 
                 final BigDecimal a_ii = solving.getCoefficients().getMatrix()[i][i];
                 if (a_ii.compareTo(BigDecimal.ZERO) == 0) {
-                    throw new SolverException("Нужна перестановка");
+                    throw new SolverException("Матрица вырождена, система не имеет единственного решения");
                 }
 
                 solution.getVector()[i] = (solving.getConstants().getVector()[i].subtract(s))

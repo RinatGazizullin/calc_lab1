@@ -1,8 +1,8 @@
-package ui.cli.commands;
+package ui.commands;
 
 import exceptions.SystemException;
 import model.LinearSystem;
-import ui.cli.basic.Command;
+import ui.basic.Command;
 
 public class Size extends Command {
     private final LinearSystem linearSystem;

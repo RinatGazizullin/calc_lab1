@@ -1,6 +1,6 @@
-package ui.cli.commands;
+package ui.commands;
 
-import ui.cli.basic.Command;
+import ui.basic.Command;
 import java.util.Arrays;
 
 public class Help extends Command {
