@@ -45,7 +45,8 @@ public class CommandLineCore {
         commands.put(Command.Type.SET, new Set(
                 new ChangeSystemBuilder(uiProcessor,
                 linearSystemRenderer),
-                linearSystem));
+                linearSystem,
+                linearSystemRenderer));
         commands.put(Command.Type.SHOW, new Show(linearSystem,
                 linearSystemRenderer));
         commands.put(Command.Type.SIZE, new Size(linearSystem));

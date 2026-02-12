@@ -60,6 +60,7 @@ public class LinearSystem implements Cloneable, SystemOperations {
         coefficients.changeSize(size);
         constants.changeSize(size);
         solution.changeSize(size);
+        resetSolution();
     }
 
     @Override

@@ -43,7 +43,8 @@ public class Random extends Command {
                     BigDecimal.valueOf(min + (Math.random() * (max - min)));
         }
 
+        system.resetSolution();
         return new Result(renderer.render(system)
-                + "\n Коэффициенты СЛУ успешно сгенерированы!", Result.Code.GOOD);
+                + "\nКоэффициенты СЛУ успешно сгенерированы!", Result.Code.GOOD);
     }
 }

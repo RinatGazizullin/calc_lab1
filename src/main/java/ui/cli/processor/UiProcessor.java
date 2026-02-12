@@ -38,8 +38,27 @@ public class UiProcessor {
         renderText(String.format("Err: %s", text), type, true);
     }
 
+    private int countRealLines(String text) {
+        if (text == null || text.isEmpty()) return 0;
+
+        final String cleanText = text.replaceAll("\033\\[[;\\d]*[A-Za-z]", "");
+        final String[] explicitLines = cleanText.split("\n", -1);
+        int totalLines = 0;
+
+        for (String line : explicitLines) {
+            if (line.isEmpty()) {
+                totalLines++;
+            } else {
+                totalLines += (line.length() + 79) / 80;
+            }
+        }
+
+        return totalLines;
+    }
+
     public void renderText(String text, Message type, boolean need) {
-        final int length = text.split("\n", -1).length;
+        //final int length = text.split("\n", -1).length;
+        final int length = countRealLines(text);
 
         if (!need) clearLength = Math.max(0, clearLength - 1);
 
